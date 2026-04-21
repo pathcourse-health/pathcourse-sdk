@@ -130,8 +130,8 @@ client.register_webhook(
 | `PCH_AUDIO_PREMIUM` | pch-audio-premium | Text-to-speech (premium) | $37.00/M chars |
 | `PCH_DOCUMENTS` | pch-documents | Document parsing, OCR | $0.26 in / $1.48 out per M tokens |
 | `PCH_TALK` | pch-talk | Voice conversation | $0.001/min |
-| `CLAUDE_HAIKU` | claude-haiku | Third-party (Silver+) | Markup over provider cost |
-| `CLAUDE_SONNET` | claude-sonnet | Third-party (Gold) | Markup over provider cost |
+| `CLAUDE_HAIKU` | claude-haiku | Third-party (Silver+) | Common rate |
+| `CLAUDE_SONNET` | claude-sonnet | Third-party (Gold) | Common rate |
 | `PCH_EMBED` | pch-embed | Text embeddings | $0.015/M tokens |
 | `PCH_TRANSCRIBE` | pch-transcribe | Speech-to-text | $0.0008/min |
 | `PCH_TRANSLATE` | pch-translate | Translation | $0.08/M chars |
