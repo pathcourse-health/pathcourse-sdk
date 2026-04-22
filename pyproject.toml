@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pathcourse-sdk"
-version = "0.3.3"
+version = "0.3.4"
 description = "Pay-per-inference billing in USDC on Base L2 via x402. No accounts required."
 readme = "README.md"
 license = {text = "MIT"}

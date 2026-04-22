@@ -73,6 +73,25 @@ response = client.chat(
 print(response.text)
 ```
 
+### One-call self-profile
+
+```python
+# Everything a headless agent needs to know about itself in one request
+me = client.me()
+print(me["tier"], me["balance"]["balance_usdc"], me["reputation"]["path_score"])
+print(me["models_available"])   # models this tier can actually call
+```
+
+### Let the gateway pick the model
+
+```python
+hint = client.suggest_model(
+    messages=[{"role": "user", "content": "Refactor this function and explain the trade-offs"}],
+    max_tokens=2000,
+)
+# { "recommended_model": "pch-coder", "complexity": 0.52, "alternatives": [...] }
+```
+
 ## Embeddings, translation, rerank
 
 ```python
@@ -139,6 +158,17 @@ client.register_webhook(
 | `PCH_RERANK` | pch-rerank | Retrieval reranking | $0.025/M tokens |
 
 Machine-readable rate sheet: [gateway.pathcoursehealth.com/v1/pricing](https://gateway.pathcoursehealth.com/v1/pricing).
+
+Call `client.get_models(scope="my_tier")` to list only the models your current tier can access.
+
+## Additional capabilities
+
+Every PCH API key unlocks four more capabilities beyond inference. Full working examples in [pch-integration-examples](https://github.com/pathcourse-health/pch-integration-examples).
+
+- **`client.memory`** — persistent embedding store with semantic retrieval (`store`, `retrieve`, `update`, `forget`, `summarize`, namespaces)
+- **`client.reputation`** — on-chain-compatible agent identity + Path Score (`score`, `check`, `history`, `erc8004`)
+- **`client.obs`** — trace/span lifecycle, anomalies, analytics, cost attribution (`trace_start`, `trace_end`, `analytics`, `cost_attribution`)
+- **`client.routing`** — agent discovery + registration (`find`, `register`, `heartbeat`, `available`)
 
 ## Environment variables
 
